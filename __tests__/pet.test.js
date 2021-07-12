@@ -113,3 +113,56 @@ describe("checkUp", () => {
         expect(pet.checkUp()).toBe("I need a walk.");
     });
 });
+
+describe("isAlive", () => {
+    let pet;
+    beforeEach(() => {
+        pet = new Pet("Fido");
+    });
+
+    it("checks the pet is alive", () => {
+        expect(pet.isAlive).toBe(true);
+    });
+
+    it("checks that the pet is dead of old age", () => {
+        pet.age = 30;
+        expect(pet.isAlive).toBe(false);
+    });
+
+    it("checks that the pet is dead due to sedentary", () => {
+        pet.fitness = 0;
+        expect(pet.isAlive).toBe(false);
+    });
+
+    it("checks that the pet is dead due to starvation", () => {
+        pet.hunger = 10;
+        expect(pet.isAlive).toBe(false);
+    });
+});
+
+describe("error messages", () => {
+    let pet;
+    beforeEach(() => {
+        pet = new Pet("Fido");
+    })
+
+    it("Checks the growUp error", () => {
+        pet.age = 30;
+        expect(() => pet.growUp()).toThrow("Your pet is no longer alive :(");
+    });
+
+    it("Checks the walk error", () => {
+        pet.fitness = 0;
+        expect(() => pet.walk()).toThrow("Your pet is no longer alive :(");
+    });
+
+    it("Checks the feed error", () => {
+        pet.hunger = 10;
+        expect(() => pet.feed()).toThrow("Your pet is no longer alive :(");
+    });
+
+    it("Checks the checkUp error", () => {
+        pet.hunger = 10;
+        expect(() => pet.checkUp()).toThrow("Your pet is no longer alive :(");
+    });
+})
