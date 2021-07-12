@@ -27,9 +27,12 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#create-a-pet">Create a Pet</a></li>
       </ul>
+    </li>
+    <li>
+      <a href="#available-functions">Available functions!</a>
     </li>
   </ol>
 </details>
@@ -41,38 +44,42 @@ This was created as part of an introduction to JavaScript as part of a bootcamp 
 <br />
 
 ## Getting Started
-To get a local copy up and running follow these simple steps.
-<br />
-<br />
 
-### Prerequisites
-* Create the directory 'virtual-pet' and move into it:
+### Install
   ```
-  mkdir virtual-pet && cd virtual-pet
+  npm install
   ```
-* Initialise NPM within the virtual-pet directory:
-  ```
-  npm init
-  ```
-* Initialise git:
-  ```
-  git init
-  ```
-* Install Jest and save it as a Dev Dependancy:
-  ```
-  npm i --D jest
-  ```
-<br />
+### Create a Pet
+1. Open your terminal and enter Node REPL
+    ```
+    node
+    ```
+2. Import the pet constructor
+    ```
+    .load src/pet.js
+    ```
+3. Create a new pet
+    ```
+    const brian = new Pet("Brian")
+    ```
 
-### Installation
-1. Clone the virtual-pet
-   ```sh
-   git clone https://github.com/GhostPhayce/virtual-pet.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+## Available functions!
+* Check the status of your pet!
+    ```
+    brian.checkUp()
+    ```
+* Feed your pet!
+    ```
+    brian.feed()
+    ```
+* Walk your pet!
+    ```
+    brian.walk()
+    ```
+* Age your pet!
+    ```
+    brian.growUp()
+    ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/GhostPhayce/virtual-pet.svg?style=for-the-badge
