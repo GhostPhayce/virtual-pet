@@ -5,13 +5,14 @@ const MIN_HUNGER = 0;
 const HUNGRY = 5;
 const UNFIT = 3;
 const MAX_AGE = 30;
-const petHasDiedMessage = "Your pet is no longer alive :(";
+const petHasDiedMessage = "Your pet is no longer alive :("
 
 function Pet(name) {
     this.name = name;
     this.age = 0;
     this.hunger = 0;
     this.fitness = MAX_FITNESS;
+    this.children = [];
 }
 
 Pet.prototype = {
@@ -24,6 +25,12 @@ Pet.prototype = {
     },
   };
 
+Pet.prototype.adoptChild = function(child) {
+    if (typeof child === "object") {
+        this.children.push(child);
+    }
+};
+
 Pet.prototype.growUp = function() {
     if (this.isAlive === false) {
         throw new Error (petHasDiedMessage);
@@ -32,7 +39,7 @@ Pet.prototype.growUp = function() {
         this.hunger += 5;
         this.fitness -= 3;
     }
-}
+};
 
 Pet.prototype.walk = function() {
     if (this.isAlive === false) {
@@ -44,7 +51,7 @@ Pet.prototype.walk = function() {
         this.fitness = MAX_FITNESS;
     }
 
-}
+};
 
 Pet.prototype.feed = function() {
     if (this.isAlive === false) {
@@ -55,7 +62,7 @@ Pet.prototype.feed = function() {
     } else {
         this.hunger = MIN_HUNGER;
     }
-}
+};
 
 Pet.prototype.checkUp = function() {
     if (this.isAlive === false) {
@@ -73,6 +80,6 @@ Pet.prototype.checkUp = function() {
     if (this.fitness <= UNFIT) {
         return "I need a walk.";
     }
-}
+};
 
 module.exports = Pet;
